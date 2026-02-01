@@ -1,1 +1,127 @@
-<h1>Vikas</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valentine?</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f9c5d1;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 14px;
+      text-align: center;
+      position: relative;
+      width: 420px;
+      z-index: 1;
+    }
+
+    h2 {
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      position: relative;
+      height: 90px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    button {
+      height: 34px;
+      padding: 0 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      line-height: 34px;
+      transition: all 0.3s ease;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #e0e0e0;
+      color: black;
+      position: relative;
+    }
+
+    /* GIF overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .overlay img {
+      max-width: 300px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Heyy beautiful, Will you be my Valentine? 💖</h2>
+
+    <div class="buttons">
+      <button id="yes">Yes</button>
+      <button id="no">No</button>
+    </div>
+  </div>
+
+  <!-- GIF Overlay -->
+  <div class="overlay" id="gifOverlay">
+    <img
+      src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHZtb3Z3MnRoZnJxdGFnOG11dnd1c3h6a290dDloNzlwMm5zd2czaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lsJCkIKV6AT28/giphy.gif"
+      alt="Celebration"
+    />
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const overlay = document.getElementById("gifOverlay");
+
+    let grownOnce = false;
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = (Math.random() - 0.5) * 280;
+      const y = (Math.random() - 0.5) * 120;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+
+      if (!grownOnce) {
+        yesBtn.style.transform = "scale(1.35)";
+        grownOnce = true;
+      }
+    });
+
+    noBtn.addEventListener("click", () => {
+
+	alert('You are not authorized to click NO')
+		
+    });
+
+    yesBtn.addEventListener("click", () => {
+      overlay.style.display = "flex";
+    });
+  </script>
+
+</body>
+</html>
