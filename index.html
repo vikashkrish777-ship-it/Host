@@ -58,7 +58,7 @@
       position: relative;
     }
 
-    /* GIF overlay */
+    /* Overlay */
     .overlay {
       position: fixed;
       inset: 0;
@@ -69,9 +69,38 @@
       z-index: 999;
     }
 
-    .overlay img {
+    .gif-box {
+      position: relative;
+    }
+
+    .gif-box img {
       max-width: 300px;
       border-radius: 12px;
+    }
+
+    .close-btn {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 28px;
+  height: 28px;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+}
+
+
+    .close-btn:hover {
+      background: #e63b5c;
     }
   </style>
 </head>
@@ -88,16 +117,20 @@
 
   <!-- GIF Overlay -->
   <div class="overlay" id="gifOverlay">
-    <img
-      src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHZtb3Z3MnRoZnJxdGFnOG11dnd1c3h6a290dDloNzlwMm5zd2czaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lsJCkIKV6AT28/giphy.gif"
-      alt="Celebration"
-    />
+    <div class="gif-box">
+      <button class="close-btn" id="closeGif">✕</button>
+      <img
+        src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHZtb3Z3MnRoZnJxdGFnOG11dnd1c3h6a290dDloNzlwMm5zd2czaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lsJCkIKV6AT28/giphy.gif"
+        alt="Celebration"
+      />
+    </div>
   </div>
 
   <script>
     const noBtn = document.getElementById("no");
     const yesBtn = document.getElementById("yes");
     const overlay = document.getElementById("gifOverlay");
+    const closeBtn = document.getElementById("closeGif");
 
     let grownOnce = false;
 
@@ -112,14 +145,12 @@
       }
     });
 
-    noBtn.addEventListener("click", () => {
-
-	alert('You are not authorized to click NO')
-		
-    });
-
     yesBtn.addEventListener("click", () => {
       overlay.style.display = "flex";
+    });
+
+    closeBtn.addEventListener("click", () => {
+      overlay.style.display = "none";
     });
   </script>
 
